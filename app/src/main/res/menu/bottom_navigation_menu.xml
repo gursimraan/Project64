@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_navigation_menu_courses"
+        android:enabled="true"
+        android:icon="@drawable/ic_courses"
+        android:title="@string/courses" />
+
+    <item
+        android:id="@+id/bottom_navigation_menu_notices"
+        android:enabled="true"
+        android:icon="@drawable/ic_notices"
+        android:title="@string/notices" />
+
+    <item
+        android:id="@+id/bottom_navigation_menu_calendar"
+        android:enabled="true"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/calendar" />
+
+    <item
+        android:id="@+id/bottom_navigation_menu_chats"
+        android:enabled="true"
+        android:icon="@drawable/ic_chats"
+        android:title="@string/chats" />
+</menu>
