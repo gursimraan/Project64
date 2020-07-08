@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="10sp">
+
+    <!--    ONGOING LECTURE ICON -->
+    <ImageView
+        android:id="@+id/onGoingIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/ongoinglecture"
+        android:src="@drawable/ic_arrow_right"
+        android:tint="@color/colorPrimary"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-10sp" />
+
+    <!--    LECTURE TIME LABEL
+    Change visibility to 'invisible' to hide it-->
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="70sp"
+        android:layout_height="0sp"
+        android:gravity="center"
+        android:layout_marginHorizontal="10sp"
+        android:paddingHorizontal="10sp"
+        android:text="9:00AM"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    LECTURE DAYS LABEL
+    Change visibility to 'visible' to view it-->
+    <TextView
+        android:id="@+id/dayLabel"
+        android:layout_width="70sp"
+        android:layout_height="0sp"
+        android:paddingHorizontal="10sp"
+        android:layout_marginHorizontal="10sp"
+        android:gravity="center"
+        android:text="M T W Th F S"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/subjectCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10sp"
+        android:background="@drawable/subject_card_background"
+        android:padding="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timeLabel"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--        SUBJECT NAME LABEL -->
+        <TextView
+            android:id="@+id/subjectLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Introduction to Programming Paradigms"
+            app:layout_constraintStart_toStartOf="@id/subjectCard"
+            app:layout_constraintTop_toTopOf="@id/subjectCard" />
+
+        <!--        SUBJECT ATTENDANCE LABEL-->
+        <TextView
+            android:id="@+id/subjectAttendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="94%"
+            app:layout_constraintStart_toStartOf="@id/subjectCard"
+            app:layout_constraintTop_toBottomOf="@id/subjectLabel" />
+
+        <!--        SUBJECT NOTIFICATIONS LABEL-->
+        <TextView
+            android:id="@+id/notificationsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subjectLabel" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5sp"
+            android:contentDescription="Notifications"
+            android:src="@drawable/ic_notifications"
+            app:layout_constraintEnd_toStartOf="@id/notificationsLabel"
+            app:layout_constraintTop_toTopOf="@id/notificationsLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
