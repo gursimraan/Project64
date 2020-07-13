@@ -5,6 +5,7 @@ import android.util.Log
 class TimeTableRepo {
     val LOG_TAG: String = "Time Table Repo"
 
+    /* FOR TODAY'S VIEW */
     fun getTimeTableFor(day: String): MutableList<Subject> {
         Log.i(LOG_TAG, "Fetching time table for $day")
         val SUBJECTS: MutableList<Subject> = mutableListOf()
@@ -15,7 +16,17 @@ class TimeTableRepo {
         return SUBJECTS
     }
 
-    fun getFakeSubject(): Subject {
+    /* FOR ALL COURSE VIEW */
+    fun getTimeTableForAllCourses(day: String): MutableList<Subject> {
+        val SUBJECTS: MutableList<Subject> = mutableListOf()
+        val NUMBER_OF_SUBJECTS: Int = 12
+        for (i in 1..NUMBER_OF_SUBJECTS) {
+            SUBJECTS.add(getFakeSubject())
+        }
+        return SUBJECTS
+    }
+
+    private fun getFakeSubject(): Subject {
         var AM_PM = "AM"
         if ((0..1).shuffled().first() == 1)
             AM_PM = "PM"
@@ -45,7 +56,7 @@ class TimeTableRepo {
         return subject
     }
 
-    fun padWithZeros(length: Int, string: String): String {
+    private fun padWithZeros(length: Int, string: String): String {
         var returnString = string
         if (string.length < length) {
             for (i in 1..(length - string.length)) {
