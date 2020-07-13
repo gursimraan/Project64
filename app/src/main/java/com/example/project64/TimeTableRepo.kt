@@ -15,6 +15,17 @@ class TimeTableRepo {
         return SUBJECTS
     }
 
+    /* FOR ALL COURSE VIEW */
+    fun getTimeTableForAllCourses(): MutableList<Subject> {
+        val SUBJECTS: MutableList<Subject> = mutableListOf()
+        val NUMBER_OF_SUBJECTS = 11
+        for (i in 0..NUMBER_OF_SUBJECTS) {
+            SUBJECTS.add(getFakeSubject())
+        }
+        return SUBJECTS
+    }
+
+
     fun getFakeSubject(): Subject {
         var AM_PM = "AM"
         if ((0..1).shuffled().first() == 1)
