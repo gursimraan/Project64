@@ -13,34 +13,48 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.todays_view)
 
-        val dayLabel: TextView? = findViewById<TextView>(R.id.dayLabel)
-        val timeLabel: TextView? = findViewById<TextView>(R.id.timeLabel)
+        val DAY_LABEL: TextView? = findViewById<TextView>(R.id.dayLabel)
+        val TIME_LABEL: TextView? = findViewById<TextView>(R.id.timeLabel)
 
 //        INITIALISING TIME TABLE REPO OBJECT
-        val timeTableRepo = TimeTableRepo()
-        val subjects: MutableList<Subject> = timeTableRepo.getTimeTableForAllCourses()
+        val TIME_TABLE_REPO = TimeTableRepo()
+        var todaysCourses: MutableList<Subject> = TIME_TABLE_REPO.getTimeTableFor("Monday")
+        var allCourses: MutableList<Subject> = TIME_TABLE_REPO.getTimeTableForAllCourses()
 
-        val listView = findViewById<ListView>(R.id.subjectList)
+        val LIST_VIEW = findViewById<ListView>(R.id.subjectList)
 
         /* CREATING CUSTOM ADAPTER FOR SUBJECTS*/
-        val timeBaseAdapter = SubjectBaseAdapter(this, subjects, "time")
-        val dayBaseAdapter = SubjectBaseAdapter(this, subjects, "day")
+        var todayCoursesAdapter = SubjectBaseAdapter(this, todaysCourses, "time")
+        var allCoursesAdapter = SubjectBaseAdapter(this, allCourses, "day")
 
-        listView.adapter = timeBaseAdapter
+        var currentViewLabel = findViewById<TextView>(R.id.current_view)
+
+        LIST_VIEW.adapter = todayCoursesAdapter
 
 
-        val viewPicker = findViewById<RelativeLayout>(R.id.view_picker)
-        viewPicker.setOnClickListener {
-            if (timeLabel != null) {
-                timeLabel.visibility = View.INVISIBLE
+        val VIEW_PICKER = findViewById<RelativeLayout>(R.id.view_picker)
+        VIEW_PICKER.setOnClickListener {
+            if (TIME_LABEL != null) {
+                TIME_LABEL.visibility = View.INVISIBLE
             }
-            if (dayLabel != null) {
-                dayLabel.visibility = View.INVISIBLE
+            if (DAY_LABEL != null) {
+                DAY_LABEL.visibility = View.INVISIBLE
             }
-            if (listView.adapter == timeBaseAdapter)
-                listView.adapter = dayBaseAdapter
-            else
-                listView.adapter = timeBaseAdapter
+            if (LIST_VIEW.adapter == todayCoursesAdapter) {
+                currentViewLabel.text = "All Course View"
+                todayCoursesAdapter = SubjectBaseAdapter(this, todaysCourses, "time")
+                allCoursesAdapter = SubjectBaseAdapter(this, allCourses, "day")
+                todaysCourses = TIME_TABLE_REPO.getTimeTableFor("Monday")
+                allCourses = TIME_TABLE_REPO.getTimeTableForAllCourses()
+                LIST_VIEW.adapter = allCoursesAdapter
+            } else {
+                currentViewLabel.text = "Today's View"
+                todayCoursesAdapter = SubjectBaseAdapter(this, todaysCourses, "time")
+                allCoursesAdapter = SubjectBaseAdapter(this, allCourses, "day")
+                todaysCourses = TIME_TABLE_REPO.getTimeTableFor("Monday")
+                allCourses = TIME_TABLE_REPO.getTimeTableForAllCourses()
+                LIST_VIEW.adapter = todayCoursesAdapter
+            }
 
         }
 

@@ -16,31 +16,31 @@ class SubjectBaseAdapter(
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         var localView = convertView
-        val viewHolder: SubjectViewHolder
+        val VIEW_HOLDER: SubjectViewHolder
 
         if (localView == null) {
-            val inflater = LayoutInflater.from(context)
-            localView = inflater.inflate(R.layout.subject_card, parent, false)
+            val INFLATER = LayoutInflater.from(context)
+            localView = INFLATER.inflate(R.layout.subject_card, parent, false)
 
-            viewHolder = SubjectViewHolder(view = localView)
-            localView.tag = viewHolder
+            VIEW_HOLDER = SubjectViewHolder(view = localView)
+            localView.tag = VIEW_HOLDER
         } else {
-            viewHolder = localView.tag as SubjectViewHolder
+            VIEW_HOLDER = localView.tag as SubjectViewHolder
         }
 
-        viewHolder.nameLabel.text = subjectList[position].name
-        viewHolder.attendanceLabel.text = subjectList[position].attendance.toString()
-        viewHolder.notificationsLabel.text = subjectList[position].notifications.toString()
-        viewHolder.timeLabel.text = subjectList[position].startTime
-        viewHolder.dayLabel.text = subjectList[position].days.joinToString("  ")
+        VIEW_HOLDER.nameLabel.text = subjectList[position].name
+        VIEW_HOLDER.attendanceLabel.text = subjectList[position].attendance.toString()
+        VIEW_HOLDER.notificationsLabel.text = subjectList[position].notifications.toString()
+        VIEW_HOLDER.timeLabel.text = subjectList[position].startTime
+        VIEW_HOLDER.dayLabel.text = subjectList[position].days.joinToString("  ")
 
 
         if (dayOrTime == "day") {
-            viewHolder.timeLabel.visibility = View.INVISIBLE
-            viewHolder.dayLabel.visibility = View.VISIBLE
+            VIEW_HOLDER.timeLabel.visibility = View.INVISIBLE
+            VIEW_HOLDER.dayLabel.visibility = View.VISIBLE
         } else {
-            viewHolder.timeLabel.visibility = View.VISIBLE
-            viewHolder.dayLabel.visibility = View.INVISIBLE
+            VIEW_HOLDER.timeLabel.visibility = View.VISIBLE
+            VIEW_HOLDER.dayLabel.visibility = View.INVISIBLE
         }
 
         return localView
