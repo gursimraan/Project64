@@ -1,6 +1,6 @@
 package com.example.project64
 
-class Subject(
+data class Subject(
     var name: String,
     var attendance: Int,
     var notifications: Int,

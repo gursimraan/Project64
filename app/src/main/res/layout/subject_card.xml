@@ -11,7 +11,7 @@
         android:id="@+id/onGoingIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/ongoinglecture"
+        android:contentDescription="@string/ongoingLecture"
         android:src="@drawable/ic_arrow_right"
         android:tint="@color/colorPrimary"
         android:visibility="invisible"
@@ -26,10 +26,9 @@
         android:id="@+id/timeLabel"
         android:layout_width="70sp"
         android:layout_height="0sp"
-        android:gravity="center"
         android:layout_marginHorizontal="10sp"
-        android:paddingHorizontal="10sp"
-        android:text="9:00AM"
+        android:gravity="center"
+        android:text="09:00AM"
         android:textAlignment="center"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,14 +41,14 @@
         android:id="@+id/dayLabel"
         android:layout_width="70sp"
         android:layout_height="0sp"
-        android:paddingHorizontal="10sp"
         android:layout_marginHorizontal="10sp"
         android:gravity="center"
+        android:paddingHorizontal="10sp"
         android:text="M T W Th F S"
         android:textAlignment="center"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -66,7 +65,7 @@
 
         <!--        SUBJECT NAME LABEL -->
         <TextView
-            android:id="@+id/subjectLabel"
+            android:id="@+id/nameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Introduction to Programming Paradigms"
@@ -75,12 +74,12 @@
 
         <!--        SUBJECT ATTENDANCE LABEL-->
         <TextView
-            android:id="@+id/subjectAttendance"
+            android:id="@+id/attendanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="94%"
             app:layout_constraintStart_toStartOf="@id/subjectCard"
-            app:layout_constraintTop_toBottomOf="@id/subjectLabel" />
+            app:layout_constraintTop_toBottomOf="@id/nameLabel" />
 
         <!--        SUBJECT NOTIFICATIONS LABEL-->
         <TextView
@@ -89,7 +88,7 @@
             android:layout_height="wrap_content"
             android:text="2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subjectLabel" />
+            app:layout_constraintTop_toBottomOf="@id/nameLabel" />
 
         <ImageView
             android:layout_width="wrap_content"

@@ -1,51 +1,65 @@
 package com.example.project64
 
-import android.util.Log
-
 class TimeTableRepo {
-    val LOG_TAG: String = "Time Table Repo"
+    private val logTag: String = "Time Table Repo"
+    private val days: List<String> = listOf("M", "T", "W", "Th", "F")
 
+    /* FOR TODAY'S VIEW */
     fun getTimeTableFor(day: String): MutableList<Subject> {
-        Log.i(LOG_TAG, "Fetching time table for $day")
-        val SUBJECTS: MutableList<Subject> = mutableListOf()
-        val NUMBER_OF_SUBJECTS: Int = (1..8).shuffled().first()
-        for (i in 1..NUMBER_OF_SUBJECTS) {
-            SUBJECTS.add(getFakeSubject())
+        val subjects: MutableList<Subject> = mutableListOf()
+        val numberOfSubjects: Int = (1..8).shuffled().first()
+        for (i in 1..numberOfSubjects) {
+            subjects.add(getFakeSubject())
         }
-        return SUBJECTS
+        return subjects
     }
 
-    fun getFakeSubject(): Subject {
-        var AM_PM = "AM"
+    /* FOR ALL COURSE VIEW */
+    fun getTimeTableForAllCourses(): MutableList<Subject> {
+        val subjects: MutableList<Subject> = mutableListOf()
+        val numberOfSubjects = 12
+        for (i in 1..numberOfSubjects) {
+            subjects.add(getFakeSubject())
+        }
+        return subjects
+    }
+
+    private fun getFakeSubject(): Subject {
+        var amOrPm = "AM"
         if ((0..1).shuffled().first() == 1)
-            AM_PM = "PM"
+            amOrPm = "PM"
 
-        val DURATION: Int = (1..2).shuffled().first()
-        val RANDOM_TIME = (1..12).shuffled().first()
-        val START_HOUR: String = padWithZeros(2, RANDOM_TIME.toString())
-        val END_HOUR: String = padWithZeros(2, (RANDOM_TIME + DURATION).toString())
+        val duration: Int = (1..2).shuffled().first()
+        val randomTime = (1..12).shuffled().first()
+        val startHour: String = padWithZeros(2, randomTime.toString())
+        val endHour: String = padWithZeros(2, (randomTime + duration).toString())
+        val minute = padWithZeros(2, ((0..3).shuffled().first() * 15).toString())
+        val startTime = "$startHour:$minute$amOrPm"
+        val endTime = "$endHour:$minute$amOrPm"
 
-        val MINUTE = padWithZeros(2, ((0..3).shuffled().first() * 15).toString())
+        val attendance = (50..100).shuffled().first()
+        val notifications = (0..10).shuffled().first()
 
-        val START_TIME = "$START_HOUR:$MINUTE$AM_PM"
-        val END_TIME = "$END_HOUR:$MINUTE$AM_PM"
+        val numberOfDays = (2..5).shuffled().first()
 
-        val ATTENDANCE = (50..100).shuffled().first()
-        val NOTIFICATIONS = (1..10).shuffled().first()
+        var subjectName = ('a'..'z').shuffled()
+            .subList(1, (6..14).shuffled().first())
+            .joinToString("")
+        subjectName = subjectName.get(0).toUpperCase()
+            .toString() + subjectName.substring(1..subjectName.length - 1)
 
         val subject = Subject(
-            "SUBJECT NAME",
-            ATTENDANCE,
-            NOTIFICATIONS,
-            START_TIME,
-            END_TIME,
-            listOf("M", "W", "Th")
+            subjectName,
+            attendance,
+            notifications,
+            startTime,
+            endTime,
+            days.subList(0, numberOfDays)
         )
-        Log.i(LOG_TAG, "$START_TIME $END_TIME")
         return subject
     }
 
-    fun padWithZeros(length: Int, string: String): String {
+    private fun padWithZeros(length: Int, string: String): String {
         var returnString = string
         if (string.length < length) {
             for (i in 1..(length - string.length)) {

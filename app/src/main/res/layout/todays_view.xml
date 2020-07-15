@@ -29,95 +29,13 @@
             android:textSize="18sp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <ListView
+        android:id="@+id/subjectList"
         android:layout_width="match_parent"
         android:layout_height="0sp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/view_picker"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-        <!--    SUBJECT CARDS WILL BE PLACED IN THIS SCROLL VIEW  -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                layout="@layout/subject_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <RelativeLayout
         android:id="@+id/view_picker"
@@ -133,13 +51,12 @@
             android:layout_centerInParent="true"
             android:text="@string/today_s_view"
             android:textSize="15sp" />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/current_view"
-            android:contentDescription="@string/dropdownarrow"
+            android:contentDescription="@string/dropDownArrow"
             android:src="@drawable/ic_arrow_down" />
     </RelativeLayout>
 
