@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val viewPicker = findViewById<RelativeLayout>(R.id.view_picker)
-        viewPicker.setOnClickListener({
+        viewPicker.setOnClickListener {
             if (timeLabel != null) {
                 timeLabel.visibility = View.INVISIBLE
             }
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             else
                 listView.adapter = timeBaseAdapter
 
-        })
+        }
 
     }
 }
